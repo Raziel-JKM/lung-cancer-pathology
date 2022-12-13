@@ -1,0 +1,56 @@
+# System
+gpu_num: 0
+seed: 42
+debug: False
+verbose: False
+
+# Train / val
+train_dir : '#' # train 데이터 경로
+val_size: 0.3
+
+# Data Loader
+input_width: 512
+input_height: 512
+scaler: normalize
+num_workers: 4
+shuffle: True
+drop_last: False
+
+# Model
+architecture: Unet
+encoder: timm-efficientnet-b0 #timm-regnety_016
+encoder_weight: noisy-student #imagenet
+depth: 5
+n_classes: 2
+activation: null
+
+# Trainer
+n_epochs: 100
+batch_size: 32
+loss: 
+  name: MeanCCELoss # MeanCCELoss
+  args:
+    weight: [1, 1]
+metrics: 
+  - miou
+  - iou0
+  - iou1
+earlystopping_target: val_miou
+earlystopping_patience: 5
+optimizer:
+  name: AdamW
+  args:
+    lr: 5.0e-04
+    weight_decay: 5.0e-02
+scheduler:
+  name: CosineAnnealingLR
+  args:
+    T_max: 100
+    eta_min: 0
+
+# Logging
+plot:
+  - loss
+  - miou
+  - iou0
+  - iou1

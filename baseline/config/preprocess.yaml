@@ -1,0 +1,8 @@
+# Resize the original dataset
+
+train_dir : '#' #train 데이터셋 디렉토리
+test_dir : '#' # test 데이터셋 디렉토리
+serial_num : '#' #시리얼 넘버
+
+resize_width : 512
+resize_height : 512

@@ -1,0 +1,13 @@
+# System
+gpu_num: 0
+
+# Model
+train_serial: '#' # ex) '20221012_174254'
+
+# Data
+batch_size: 16
+num_workers: 4
+test_dir: '#' # test 데이터 경로
+
+# Logging
+verbose: false
